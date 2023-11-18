@@ -1,5 +1,7 @@
-﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
+﻿using FluentAssertions;
+using Microsoft.VisualStudio.TestTools.UnitTesting;
 using System.Threading.Tasks;
+
 using VerifyCS = ExplodingWhale.Test.CSharpCodeFixVerifier<
     ExplodingWhale.ExplodingWhaleAnalyzer,
     ExplodingWhale.ExplodingWhaleCodeFixProvider>;
@@ -54,6 +56,7 @@ namespace ExplodingWhale.Test
 
             var expected = VerifyCS.Diagnostic("ExplodingWhale").WithLocation(0).WithArguments("TypeName");
             await VerifyCS.VerifyCodeFixAsync(test, expected, fixtest);
+            false.Should().BeFalse();
         }
     }
 }
