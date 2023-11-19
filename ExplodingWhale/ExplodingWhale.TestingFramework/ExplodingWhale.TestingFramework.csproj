@@ -3,21 +3,21 @@
 	<PropertyGroup>
 		<TargetFramework>net7.0</TargetFramework>
 		<LangVersion>11</LangVersion>
-
-		<AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
-		<GenerateBindingRedirectsOutputType>true</GenerateBindingRedirectsOutputType>
+		<ImplicitUsings>enable</ImplicitUsings>
 	</PropertyGroup>
 
 	<ItemGroup>
 		<PackageReference Include="FluentAssertions" Version="6.12.0" />
-		<PackageReference Include="Microsoft.NET.Test.Sdk" Version="15.9.0" />
-		<PackageReference Include="MSTest.TestAdapter" Version="1.3.2" />
-		<PackageReference Include="MSTest.TestFramework" Version="1.3.2" />
+		<PackageReference Include="Microsoft.CodeAnalysis" Version="4.7.0" />
 	</ItemGroup>
 
 	<ItemGroup>
 		<ProjectReference Include="..\ExplodingWhale.CodeFixes\ExplodingWhale.CodeFixes.csproj" />
-		<ProjectReference Include="..\ExplodingWhale.TestingFramework\ExplodingWhale.TestingFramework.csproj" />
+		<ProjectReference Include="..\ExplodingWhale\ExplodingWhale.csproj" />
+	</ItemGroup>
+
+	<ItemGroup>
+		<ProjectReference Include="..\ExplodingWhale.CodeFixes\ExplodingWhale.CodeFixes.csproj" />
 		<ProjectReference Include="..\ExplodingWhale\ExplodingWhale.csproj" />
 	</ItemGroup>
 
@@ -26,7 +26,6 @@
 		<Using Include="System.Linq" />
 		<Using Include="System.Collections" />
 		<Using Include="System.Collections.Generic" />
-		<Using Include="ExplodingWhale.TestingFramework" />
 	</ItemGroup>
 
 </Project>
