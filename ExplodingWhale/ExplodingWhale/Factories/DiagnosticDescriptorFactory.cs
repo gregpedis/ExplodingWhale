@@ -8,13 +8,16 @@ internal static class DiagnosticDescriptorFactory
         string id,
         string title,
         string messageFormat,
-        string category = null,
+        string ruleName,
+        string category = Constants.DEFAULT_CATEGORY,
         bool enabledByDefault = true)
         => new(
             id,
             title,
             messageFormat,
-            category ?? Constants.DEFAULT_CATEGORY,
+            category,
             DiagnosticSeverity.Warning,
-            isEnabledByDefault: enabledByDefault);
+            isEnabledByDefault: enabledByDefault,
+            helpLinkUri: $"https://github.com/gregpedis/ExplodingWhale/tree/master/docs/reference/{id}_{ruleName}.md"
+            );
 }

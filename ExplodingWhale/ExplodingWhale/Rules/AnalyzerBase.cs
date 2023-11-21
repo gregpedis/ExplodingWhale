@@ -14,7 +14,7 @@ public abstract class AnalyzerBase : DiagnosticAnalyzer
     public string DiagnosticId => $"{Constants.RULE_PREFIX}{Id}";
 
     public DiagnosticDescriptor Rule =>
-        DiagnosticDescriptorFactory.Create(DiagnosticId, Title, MessageFormat);
+        DiagnosticDescriptorFactory.Create(DiagnosticId, Title, MessageFormat, GetType().Name);
 
     public override ImmutableArray<DiagnosticDescriptor> SupportedDiagnostics =>
         ImmutableArray.Create(Rule);
