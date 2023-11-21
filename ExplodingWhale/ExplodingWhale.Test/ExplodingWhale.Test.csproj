@@ -27,6 +27,7 @@
 		<Using Include="System.Collections" />
 		<Using Include="System.Collections.Generic" />
 		<Using Include="ExplodingWhale.TestingFramework" />
+		<Using Include="Microsoft.CodeAnalysis" />
 	</ItemGroup>
 
 </Project>

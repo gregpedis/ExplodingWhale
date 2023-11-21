@@ -26,6 +26,7 @@
 		<Using Include="System.Linq" />
 		<Using Include="System.Collections" />
 		<Using Include="System.Collections.Generic" />
+		<Using Include="Microsoft.CodeAnalysis" />
 	</ItemGroup>
 
 </Project>

@@ -8,13 +8,13 @@ namespace ExplodingWhale.Test;
 public class TypeNameContainsHelperTest
 {
     [TestMethod]
-    public void Test_Success() =>
+    public void TypeNameContainsHelperTest_Success() =>
         AnalyzerVerifier.Verify<TypeNameContainsHelper>("""
             public class NotAHelpER { }
             """);
 
     [TestMethod]
-    public void Test_ShouldRaise() =>
+    public void TypeNameContainsHelperTest_ShouldRaise() =>
         AnalyzerVerifier.Verify<TypeNameContainsHelper>("""
             public class ThingyHelper  // Bad
             { } 

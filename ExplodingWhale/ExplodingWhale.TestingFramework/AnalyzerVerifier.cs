@@ -13,14 +13,14 @@ public static class AnalyzerVerifier
     private static readonly Regex EXPECTED_REGEX = new($"// Bad{OFFSET_GROUP}{MESSAGE_GROUP}", RegexOptions.Compiled);
     private static readonly Regex LOCATION_REGEX = new(@$"\s*//\s*(?<{nameof(LOCATION_REGEX)}>\^+)\s*?", RegexOptions.Compiled);
 
-    public static void Verify<TAnalyzer>(string code)
+    public static void Verify<TAnalyzer>(string code, OutputKind projectKind = OutputKind.DynamicallyLinkedLibrary)
         where TAnalyzer : DiagnosticAnalyzer, new()
     {
         var tree = SyntaxFactory.ParseSyntaxTree(code, new CSharpParseOptions(LanguageVersion.CSharp11));
 
         var diagnostics = CSharpCompilation.Create("InMemoryCompilation")
             .AddReferences(MetadataReference.CreateFromFile(typeof(object).Assembly.Location))
-            .WithOptions(new(OutputKind.DynamicallyLinkedLibrary))
+            .WithOptions(new(projectKind))
             .AddSyntaxTrees(tree)
             .WithAnalyzers(ImmutableArray.Create<DiagnosticAnalyzer>().Add(new TAnalyzer()))
             .GetAllDiagnosticsAsync()
