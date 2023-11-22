@@ -24,7 +24,6 @@ public class EqualityOperatorWithNull : AnalyzerBase
     private void Analyze(SyntaxNodeAnalysisContext context, string before, string after)
     {
         var node = (BinaryExpressionSyntax)context.Node;
-
         if (Null(context, node.Left) ^ Null(context, node.Right)) // XOR because "null is (not) null" is not valid 
         {
             context.ReportDiagnostic(Diagnostic.Create(Rule, node.GetLocation(), before, after));

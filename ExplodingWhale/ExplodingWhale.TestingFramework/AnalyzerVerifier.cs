@@ -1,6 +1,7 @@
 ﻿using Microsoft.CodeAnalysis.CSharp;
 using Microsoft.CodeAnalysis.Diagnostics;
 using System.Collections.Immutable;
+using System.Diagnostics;
 using System.Text.RegularExpressions;
 
 namespace ExplodingWhale.TestingFramework;
@@ -28,7 +29,18 @@ public static class AnalyzerVerifier
         var actual = Actual(diagnostics);
         var expected = Expected(code);
 
+        PrettyPrint(actual);
         expected.Should().BeEquivalentTo(actual);
+    }
+
+    private static void PrettyPrint(IssueLocation[] issues)
+    {
+        for (int i = 0; i < issues.Length; i++)
+        {
+            var issue = issues[i];
+            Debug.WriteLine($"Issue #{i}: Span L{issue.Line}:{issue.ColFrom}-{issue.ColTo}");
+            Debug.WriteLine(issue.Message);
+        }
     }
 
     private static IssueLocation[] Actual(ImmutableArray<Diagnostic> diagnostics) =>
