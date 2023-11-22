@@ -17,6 +17,6 @@ If for any reason you cannot rename the type.
 ## Example of a violation
 
 ```csharp
-class ThingyHelper { } // Bad
+class ThingyHelper { }  // Bad
 //          ^^^^^^
 ```

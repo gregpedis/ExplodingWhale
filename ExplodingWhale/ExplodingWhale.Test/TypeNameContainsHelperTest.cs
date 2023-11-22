@@ -1,6 +1,4 @@
-﻿
-using ExplodingWhale.Rules;
-using Microsoft.VisualStudio.TestTools.UnitTesting;
+﻿using ExplodingWhale.Rules;
 
 namespace ExplodingWhale.Test;
 

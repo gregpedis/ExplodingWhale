@@ -1,5 +1,4 @@
 ﻿using ExplodingWhale.Rules;
-using Microsoft.VisualStudio.TestTools.UnitTesting;
 
 namespace ExplodingWhale.Test;
 

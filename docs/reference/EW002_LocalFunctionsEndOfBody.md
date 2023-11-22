@@ -21,7 +21,7 @@ public int Method()
     var x = 1;
     return AddOne(x);
 
-    int AddOne(int x) => x+1;                   // Bad { Move 'AddOne' at the end of the body. }
+    int AddOne(int x) => x+1;   // Bad { Move 'AddOne' at the end of the body. }
     //  ^^^^^^
 
     var shouldNotBeHere = 42;

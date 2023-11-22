@@ -28,6 +28,8 @@
 		<Using Include="System.Collections.Generic" />
 		<Using Include="ExplodingWhale.TestingFramework" />
 		<Using Include="Microsoft.CodeAnalysis" />
+		<Using Include="Microsoft.VisualStudio.TestTools.UnitTesting" />
+
 	</ItemGroup>
 
 </Project>

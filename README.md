@@ -8,8 +8,8 @@ Some coding style analyzers, based on the [coding style](https://github.com/Sona
 
 - [x] EW001: Type name contains `Helper`
 - [x] EW002: Local functions should be placed at the end of a method
-- [ ] EW003: Single variable lambdas should use `x` as the variable name
-- [ ] EW004: Use `is {}` and `is not null` as null-checks (instead of `!= null`).
+- [x] EW003: Use `is {}` and `is not null` as null-checks (instead of `!= null`).
+- [ ] EW004: Single variable lambdas should use `x` as the variable name
 - [ ] EW005: Var pattern `is var o` can be used only where variable declarations would require additional nesting.
 - [ ] EW006: Var pattern `o is { P: var p }` can be used only where `o` can be `null` and `p` is used at least 3 times.
 - [ ] EW007: Each compiler directive outside method body (namely `#if`/`#endif`) should be preceded and followed by an empty line.
