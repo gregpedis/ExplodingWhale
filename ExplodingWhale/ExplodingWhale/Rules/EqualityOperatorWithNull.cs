@@ -10,7 +10,7 @@ public class EqualityOperatorWithNull : AnalyzerBase
 {
     protected override string Id => "003";
     protected override string Title => "Use 'is (not)' to compare with null";
-    protected override string MessageFormat => "Replace '{0}' with '{1}' when comparing with null";
+    protected override string MessageFormat => "Replace '{0}' with '{1}' when comparing with null.";
 
     protected override void Register(AnalysisContext context)
     {

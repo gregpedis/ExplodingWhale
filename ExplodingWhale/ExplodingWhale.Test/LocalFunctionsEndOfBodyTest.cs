@@ -6,7 +6,7 @@ namespace ExplodingWhale.Test;
 public class LocalFunctionsEndOfBodyTest
 {
     [TestMethod]
-    public void LocalFunctionsEndOfBody_Success() =>
+    public void LocalFunctionsEndOfBody_NoIssues() =>
         AnalyzerVerifier.Verify<LocalFunctionsEndOfBody>("""
             public class SomeClass
             {
@@ -81,7 +81,7 @@ public class LocalFunctionsEndOfBodyTest
             """);
 
     [TestMethod]
-    public void LocalFunctionsEndOfBody_ShouldRaise_TopLevel() => // Top level statements are ignored. They are a mess anyways.
+    public void LocalFunctionsEndOfBody_TopLevel_NoIssues() => // Top level statements are ignored. They are a mess anyways.
         AnalyzerVerifier.Verify<LocalFunctionsEndOfBody>("""
             public int Method() => 42;
             var x = 1;

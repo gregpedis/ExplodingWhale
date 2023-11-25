@@ -6,7 +6,7 @@ namespace ExplodingWhale.Test;
 public class StaticAfterInstanceMethodsTest
 {
     [TestMethod]
-    public void StaticAfterInstanceMethods_Success() =>
+    public void StaticAfterInstanceMethods_NoIssues() =>
         AnalyzerVerifier.Verify<StaticAfterInstanceMethods>("""
             class Mixed
             {
@@ -68,7 +68,7 @@ public class StaticAfterInstanceMethodsTest
             
                 void Instance1() { }
 
-                static void Static1() { } // Bad {Move static method 'Static1' after all the instance methods}
+                static void Static1() { } // Bad {Move static method 'Static1' after all the instance methods.}
 
                 void Instance2() { }
             

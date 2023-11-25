@@ -11,7 +11,7 @@ public class TypeNameContainsHelper : AnalyzerBase
 
     protected override string Id => "001";
     protected override string Title => "Type name contains 'Helper'";
-    protected override string MessageFormat => "Type name '{0}' contains the word 'Helper'";
+    protected override string MessageFormat => "Type name '{0}' contains the word 'Helper'.";
 
     protected override void Register(AnalysisContext context) =>
         context.RegisterSymbolAction(Analyze, SymbolKind.NamedType);

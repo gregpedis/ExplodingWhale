@@ -8,7 +8,7 @@ public class StaticAfterInstanceMethods : AnalyzerBase
 {
     protected override string Id => "004";
     protected override string Title => "Static methods should be placed after instance methods";
-    protected override string MessageFormat => "Move static method '{0}' after all the instance methods";
+    protected override string MessageFormat => "Move static method '{0}' after all the instance methods.";
 
     protected override void Register(AnalysisContext context) =>
         context.RegisterSymbolAction(Analyze, SymbolKind.NamedType);

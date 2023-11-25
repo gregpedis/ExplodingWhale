@@ -1,4 +1,4 @@
-# EW004: Static methods should be after instance methods
+# EW004: Static methods should be placed after instance methods
 
 ## Rule Description
 
@@ -20,7 +20,7 @@ class SomeClass
 {
     void Instance1() { }
 
-    static void Static1() { } // Bad { Move static method 'Static1' after all the instnace methods }
+    static void Static1() { } // Bad { Move static method 'Static1' after all the instance methods }
     //          ^^^^^^^
 
     void Instance2() { }

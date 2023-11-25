@@ -6,7 +6,7 @@ namespace ExplodingWhale.Test;
 public class EqualityOperatorWithNullTest
 {
     [TestMethod]
-    public void EqualityOperatorWithNull_Success() =>
+    public void EqualityOperatorWithNull_NoIssues() =>
         AnalyzerVerifier.Verify<EqualityOperatorWithNull>("""
             public class SomeClass
             {
@@ -28,8 +28,8 @@ public class EqualityOperatorWithNullTest
             {
                 public int Method(SomeClass thingy)
                 {
-                    _ = thingy == null;             // Bad {Replace '==' with 'is' when comparing with null}
-                    _ = thingy != null;            // Bad {Replace '!=' with 'is not' when comparing with null}
+                    _ = thingy == null;             // Bad {Replace '==' with 'is' when comparing with null.}
+                    _ = thingy != null;            // Bad {Replace '!=' with 'is not' when comparing with null.}
 
                     _ = thingy == null ? 42 : 0;    // Bad
                     //  ^^^^^^^^^^^^^^
