@@ -6,10 +6,12 @@
 - [x] EW002: Local functions should be placed at the end of a method
 - [x] EW003: Use `is {}` and `is not null` as null-checks (instead of `!= null`).
 - [x] EW004: Static methods are prefered to be after instance ones.
-- [ ] EW005: Static fields should be placed before instance ones.
-- [ ] EW006: Static properties should be placed before instance ones.
+- [x] EW005: Static fields should be placed before instance ones.
+- [x] EW006: Static properties should be placed before instance ones.
+
 - [ ] EW007: Ordering of class/struct members should be followed.
 - [ ] EW008: Each category of members should be ordered from higher to lower accessibility (public>protected internal>internal>protected>private protected>private).
+
 - [ ] EW009: When using an arrow method, the `=>` token must be on the same line as the declaration and the expression body should be on the following.
 - [ ] EW010: `if/else if/else` should be used if every branch ends with a `return` statement. Exception is made for input validation.
 - [ ] EW011: Var pattern `is var o` can be used only where variable declarations would require additional nesting.
