@@ -9,7 +9,7 @@ internal static class DiagnosticDescriptorFactory
         string title,
         string messageFormat,
         string ruleName,
-        string category = Constants.DEFAULT_CATEGORY,
+        string category = "Styling",
         bool enabledByDefault = true)
         => new(
             id,

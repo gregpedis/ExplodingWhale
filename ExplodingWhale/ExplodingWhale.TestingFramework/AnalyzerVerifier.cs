@@ -44,7 +44,7 @@ public static class AnalyzerVerifier
     }
 
     private static IssueLocation[] Actual(ImmutableArray<Diagnostic> diagnostics) =>
-        diagnostics.Where(d => d.Id.StartsWith(Constants.RULE_PREFIX)).Select(IssueLocation.Create).OrderBy(x => (x.Line, x.ColFrom, x.ColTo)).ToArray();
+        diagnostics.Where(d => d.Id.StartsWith(Definitions.RULE_PREFIX)).Select(IssueLocation.Create).OrderBy(x => (x.Line, x.ColFrom, x.ColTo)).ToArray();
 
     // Support:
     // // Bad  

@@ -11,7 +11,7 @@ public abstract class AnalyzerBase : DiagnosticAnalyzer
     protected abstract string Title { get; }
     protected abstract string MessageFormat { get; }
 
-    public string DiagnosticId => $"{Constants.RULE_PREFIX}{Id}";
+    public string DiagnosticId => $"{Definitions.RULE_PREFIX}{Id}";
 
     public DiagnosticDescriptor Rule =>
         DiagnosticDescriptorFactory.Create(DiagnosticId, Title, MessageFormat, GetType().Name);
