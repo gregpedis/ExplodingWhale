@@ -1,6 +1,4 @@
-﻿using Microsoft.CodeAnalysis;
-
-namespace ExplodingWhale.TestingFramework;
+﻿namespace ExplodingWhale.TestingFramework;
 
 public sealed class IssueLocation : IEquatable<IssueLocation>
 {

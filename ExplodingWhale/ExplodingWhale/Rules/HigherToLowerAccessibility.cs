@@ -1,7 +1,7 @@
 ﻿using ExplodingWhale.Extensions;
 using Microsoft.CodeAnalysis;
-using Microsoft.CodeAnalysis.CSharp.Syntax;
 using Microsoft.CodeAnalysis.Diagnostics;
+using System.Collections.Immutable;
 
 namespace ExplodingWhale.Rules;
 
@@ -12,18 +12,19 @@ public class HigherToLowerAccessibility : AnalyzerBase
     protected override string Title => "Members of the same kind should be ordered from higher to lower accessibility";
     protected override string MessageFormat => "Move member '{0}' above all members of the same kind with less accessibility.";
 
+    protected static readonly ImmutableHashSet<MethodKind> ValidMethodKinds = ImmutableHashSet.Create(
+                MethodKind.Constructor,
+                MethodKind.Destructor,
+                MethodKind.ExplicitInterfaceImplementation,
+                MethodKind.Ordinary,
+                MethodKind.StaticConstructor);
+
     protected override void Register(AnalysisContext context) =>
         context.RegisterSymbolAction(Analyze, SymbolKind.NamedType);
 
     private void Analyze(SymbolAnalysisContext context)
     {
         var type = (INamedTypeSymbol)context.Symbol;
-
-        var members = type.GetMembers(); // TODO: remove this
-
-        // TODO: Verify that filtering and grouping is correct
-        // TODO: UTs
-        // TODO: Fix documentation
         var groupedMembers = type.GetMembers().Where(FilterMember).GroupBy(GroupMember);
         foreach (var memberGroup in groupedMembers)
         {
@@ -45,28 +46,22 @@ public class HigherToLowerAccessibility : AnalyzerBase
                     context.ReportDiagnostic(diagnostic);
                 }
             }
+            else
+            {
+                // always check against the lowest accessibility found so far.
+                // The goal is for every partition to never have something with lower accessibility above it.
+                // For example, in the scenario we find public -> private -> protected, we know that protected has to be moved up.
+                currentAccessibility = group.Key;
+            }
         }
     }
 
-    private static bool FilterMember(ISymbol symbol)
-    {
-        if (symbol.IsImplicitlyDeclared)
-        {
-            return false;
-        }
-        else if (symbol is IMethodSymbol method)
-        {
-            return method.MethodKind is not MethodKind.PropertyGet or MethodKind.PropertySet;
-        }
-        else
-        {
-            return true;
-        }
-    }
+    private static bool FilterMember(ISymbol symbol) =>
+        !symbol.IsImplicitlyDeclared
+        && (symbol is not IMethodSymbol method || ValidMethodKinds.Contains(method.MethodKind));
 
     private static (SymbolKind, MethodKind, bool) GroupMember(ISymbol symbol) => // both constructors and methods have symbol.Kind == Method
         symbol is IMethodSymbol method
             ? (method.Kind, method.MethodKind, method.IsStatic)
             : (symbol.Kind, default, symbol.IsStatic);
 }
-

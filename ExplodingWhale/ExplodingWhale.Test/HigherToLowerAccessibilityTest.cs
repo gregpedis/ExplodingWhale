@@ -1,5 +1,4 @@
 ﻿using ExplodingWhale.Rules;
-using System;
 
 namespace ExplodingWhale.Test;
 
@@ -15,14 +14,16 @@ public class HigherToLowerAccessibilityTest
             {
                 public int @public;
                 protected internal int @protected_internal;
-                protected int @protected;
                 internal int @internal;
+                protected int @protected;
                 private protected int @private_protected;
                 private int @private;
             }
 
             public class Mixed_OutOfOrder
             {
+                static Mixed_OutOfOrder() {}
+
                 private event EventHandler e;
 
                 public int PublicMethod(int x) => 42;
@@ -37,11 +38,11 @@ public class HigherToLowerAccessibilityTest
 
                 internal int @internal_property { get => 42; }
 
+                internal int @internal;
+
                 protected int @protected;
 
                 private Mixed_OutOfOrder(int x) {}
-
-                internal int @internal;
 
                 private protected int @private_protected;
 
@@ -53,7 +54,11 @@ public class HigherToLowerAccessibilityTest
 
                 private int @private_property { get; set; }
 
+                private protected static int PrivateProtectedStaticMethod(int x) => 42;
+
                 protected int ProtectedMethod(int x) => 42;
+
+                private static int PrivateStaticMethod(int x) => 42;
             }
             """);
 
@@ -76,5 +81,41 @@ public class HigherToLowerAccessibilityTest
 
                 private int x6;
             } 
+
+            public class Mixed
+            {
+                ~Mixed() {} // Destructors cannot have access modifiers
+
+                private Mixed(int x) {}
+                protected internal Mixed() {} // Bad
+
+                static Mixed() {} // Static constructor can only be parameterless and without access modifiers
+
+                private event EventHandler e1;
+                public event EventHandler e2; // Bad
+
+                protected int ProtectedMethod(int x) => 42;
+                public int PublicMethod(int x) => 42; // Bad
+
+                internal class InternalClass {}
+                protected internal class PublicClass {} // Bad
+
+                public int @public;
+                protected internal int @protected_internal;
+                private int @private;
+                protected int @protected; // Bad
+                private protected int @private_protected; // Bad
+                int @implicit_private;
+                internal int @internal; // Bad
+
+                internal int @internal_property { get => 42; }
+                private int @private_property { get; set; }
+                public int @public_property { get; set; } // Bad
+
+                private static int PrivateStaticMethod(int x) => 42;
+                private protected static int PrivateProtectedStaticMethod(int x) => 42; // Bad
+
+                public static Mixed operator +(Mixed x) => default; // User operators must be public and static
+            }
             """);
 }

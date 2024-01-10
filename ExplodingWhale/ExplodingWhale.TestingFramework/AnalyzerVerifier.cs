@@ -29,7 +29,10 @@ public static class AnalyzerVerifier
         var actual = Actual(diagnostics);
         var expected = Expected(code);
 
+        Debug.WriteLine("Actual:");
         PrettyPrint(actual);
+        Debug.WriteLine("Expected:");
+        PrettyPrint(expected);
         expected.Should().BeEquivalentTo(actual);
     }
 
