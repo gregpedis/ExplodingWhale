@@ -64,7 +64,7 @@ public class HigherToLowerAccessibility : AnalyzerBase
         }
     }
 
-    private static (SymbolKind, MethodKind, bool) GroupMember(ISymbol symbol) => // both constructors and methods have the same kind.
+    private static (SymbolKind, MethodKind, bool) GroupMember(ISymbol symbol) => // both constructors and methods have symbol.Kind == Method
         symbol is IMethodSymbol method
             ? (method.Kind, method.MethodKind, method.IsStatic)
             : (symbol.Kind, default, symbol.IsStatic);

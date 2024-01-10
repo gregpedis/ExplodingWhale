@@ -60,19 +60,19 @@ public class HigherToLowerAccessibilityTest
     [TestMethod]
     public void HigherToLowerAccessibility_ShouldRaise() =>
         AnalyzerVerifier.Verify<HigherToLowerAccessibility>("""
-            public class ThingyHelper
+            public class Simple
             {
                 int x0;
 
-                public int x1;
+                public int x1; // Bad
 
-                protected internal int x2;
+                protected internal int x2; // Bad { Move member 'x2' above all members of the same kind with less accessibility. }
 
-                internal int x3;
+                internal int x3; // Bad
 
-                protected int x4;
+                protected int x4; // Bad
 
-                private protected int x5;
+                private protected int x5; // Bad
 
                 private int x6;
             } 
