@@ -29,7 +29,7 @@ public class EqualityOperatorWithNullTest
                 public int Method(SomeClass thingy)
                 {
                     _ = thingy == null;             // Bad {Replace '==' with 'is' when comparing with null.}
-                    _ = thingy != null;            // Bad {Replace '!=' with 'is not' when comparing with null.}
+                    _ = thingy != null;             // Bad
 
                     _ = thingy == null ? 42 : 0;    // Bad
                     //  ^^^^^^^^^^^^^^
@@ -38,7 +38,7 @@ public class EqualityOperatorWithNullTest
                     //  ^^^^^^^^^^^^^^^^^^^^^^
 
                     _ = null == thingy;             // Bad
-                    _ = (null) != thingy;           // Bad
+                    _ = (null) != thingy;           // Bad {Replace '!=' with 'is not' and reverse the operands when comparing with null.}
                 }
             }
             """);

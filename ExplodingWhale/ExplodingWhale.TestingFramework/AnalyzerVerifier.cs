@@ -31,8 +31,11 @@ public static class AnalyzerVerifier
 
         Debug.WriteLine("Actual:");
         PrettyPrint(actual);
+        Debug.WriteLine("=================");
         Debug.WriteLine("Expected:");
         PrettyPrint(expected);
+
+        expected.Should().HaveSameCount(actual);
         expected.Should().BeEquivalentTo(actual);
     }
 
@@ -50,7 +53,7 @@ public static class AnalyzerVerifier
         diagnostics.Where(d => d.Id.StartsWith(Definitions.RULE_PREFIX)).Select(IssueLocation.Create).OrderBy(x => (x.Line, x.ColFrom, x.ColTo)).ToArray();
 
     // Support:
-    // // Bad  
+    // // Bad
     // // Bad@+42
     // // Bad@-42
     // // Bad {message}
