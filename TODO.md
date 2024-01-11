@@ -3,7 +3,6 @@
 ## Rules
 
 - [ ] Ordering of class/struct members should be followed.
-- [ ] Each category of members should be ordered from higher to lower accessibility (public>protected internal>internal>protected>private protected>private).
 
 - [ ] Groups of members must be separated by an empty line
 - [ ] Each compiler directive outside method body (namely `#if`/`#endif`) should be preceded and followed by an empty line.
@@ -24,9 +23,11 @@
 ## Boring stuff
 
 - Add package signing
+- Maybe do codefixes?
+
 - Add social media preview when repo is public
 - Fix package logo URL in README.md to full github url for nuget.org when repo is public
-- Maybe do codefixes?
+
 <!-- - Make a list of rules -->
 <!-- - Add readme for package -->
 <!-- - Cleanup nuspec -->

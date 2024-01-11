@@ -80,7 +80,7 @@ public class HigherToLowerAccessibilityTest
                 private protected int x5; // Bad
 
                 private int x6;
-            } 
+            }
 
             public class Mixed
             {
@@ -114,6 +114,7 @@ public class HigherToLowerAccessibilityTest
 
                 private static int PrivateStaticMethod(int x) => 42;
                 private protected static int PrivateProtectedStaticMethod(int x) => 42; // Bad
+                //                           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
                 public static Mixed operator +(Mixed x) => default; // User operators must be public and static
             }
