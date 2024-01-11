@@ -25,9 +25,6 @@
 - Add package signing
 - Maybe do codefixes?
 
-- Add social media preview when repo is public
-- Fix package logo URL in README.md to full github url for nuget.org when repo is public
-
 <!-- - Make a list of rules -->
 <!-- - Add readme for package -->
 <!-- - Cleanup nuspec -->
