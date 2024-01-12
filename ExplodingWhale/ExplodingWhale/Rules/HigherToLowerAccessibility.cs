@@ -8,16 +8,16 @@ namespace ExplodingWhale.Rules;
 [DiagnosticAnalyzer(LanguageNames.CSharp)]
 public class HigherToLowerAccessibility : AnalyzerBase
 {
-    protected override string Id => "007";
-    protected override string Title => "Members of the same kind should be ordered from higher to lower accessibility";
-    protected override string MessageFormat => "Move member '{0}' above all members of the same kind with less accessibility.";
-
     protected static readonly ImmutableHashSet<MethodKind> ValidMethodKinds = ImmutableHashSet.Create(
                 MethodKind.Constructor,
                 MethodKind.Destructor,
                 MethodKind.ExplicitInterfaceImplementation,
                 MethodKind.Ordinary,
                 MethodKind.StaticConstructor);
+
+    protected override string Id => "007";
+    protected override string Title => "Members of the same kind should be ordered from higher to lower accessibility";
+    protected override string MessageFormat => "Move member '{0}' above all members of the same kind with less accessibility.";
 
     protected override void Register(AnalysisContext context) =>
         context.RegisterSymbolAction(Analyze, SymbolKind.NamedType);

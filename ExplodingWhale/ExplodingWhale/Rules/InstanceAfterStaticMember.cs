@@ -48,5 +48,5 @@ public class InstanceAfterStaticProperties : InstanceAfterStaticMember
     protected override string MemberNamePlural => "properties";
 
     protected override IEnumerable<ISymbol> ApplicableMembers(INamedTypeSymbol container) =>
-        container.GetMembers().Where(x => x.Kind == SymbolKind.Property); 
+        container.GetMembers().Where(x => x.Kind == SymbolKind.Property);
 }
