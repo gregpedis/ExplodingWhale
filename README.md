@@ -16,3 +16,4 @@ Some coding style analyzers, based on the [coding style](https://github.com/Sona
 - [x] EW005: Instance fields should be placed after static fields.
 - [x] EW006: Instance properties should be placed after static properties.
 - [x] EW007: Members of the same kind should be ordered from higher to lower accessibility.
+- [x] EW008: Ordering of type members should be followed.

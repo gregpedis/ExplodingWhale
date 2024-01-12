@@ -7,7 +7,7 @@ public sealed class IssueLocation : IEquatable<IssueLocation>
     public int? ColTo { get; set; }
     public string Message { get; set; }
 
-    public IssueLocation(int line, string message = null) 
+    public IssueLocation(int line, string message = null)
         : this(line, null, null, message)
     { }
 
@@ -19,7 +19,7 @@ public sealed class IssueLocation : IEquatable<IssueLocation>
         Message = message;
     }
 
-    public override bool Equals(object obj) 
+    public override bool Equals(object obj)
         => Equals(obj as IssueLocation);
 
     public bool Equals(IssueLocation other)
@@ -30,7 +30,7 @@ public sealed class IssueLocation : IEquatable<IssueLocation>
             && KindOfEqual(ColTo, other?.ColTo)
             && KindOfEqual(Message, other?.Message);
 
-        static bool KindOfEqual<T>(T left, T right) => 
+        static bool KindOfEqual<T>(T left, T right) =>
             left is null || right is null || left.Equals(right);
     }
 

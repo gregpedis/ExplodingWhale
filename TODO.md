@@ -2,9 +2,7 @@
 
 ## Rules
 
-- [ ] Ordering of class/struct members should be followed.
-
-- [ ] Groups of members must be separated by an empty line
+- [ ] Groups of members must be separated by an empty line.
 - [ ] Each compiler directive outside method body (namely `#if`/`#endif`) should be preceded and followed by an empty line.
 - [ ] When using an arrow method, the `=>` token must be on the same line as the declaration and the expression body should be on the following.
 
